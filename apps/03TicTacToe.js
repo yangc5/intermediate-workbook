@@ -5,12 +5,16 @@ var prompt = require('prompt');
 prompt.start();
 
 var board = [
-    [' ', ' ', ' '],
-    [' ', ' ', ' '],
-    [' ', ' ', ' ']
+  [' ', ' ', ' '],
+  [' ', ' ', ' '],
+  [' ', ' ', ' ']
 ];
 
 var playerTurn = 'X';
+
+function togglePlayerTurn() {
+  playerTurn= (playerTurn === 'X' ? 'O' : 'X');
+}
 
 function printBoard() {
     console.log('   0  1  2');
@@ -22,23 +26,36 @@ function printBoard() {
 }
 
 function horizontalWin() {
-    // Your code here
+    if((board[0][0]===playerTurn&&board[0][1]===playerTurn&&board[0][2]===playerTurn)||(board[1][0]===playerTurn&&board[1][1]===playerTurn&&board[1][2]===playerTurn)||(board[2][0]===playerTurn&&board[2][1]===playerTurn&&board[2][2]===playerTurn)){
+      return true;
+    }
+
 }
 
 function verticalWin() {
-    // Your code here
+  if((board[0][0]===playerTurn&&board[1][0]===playerTurn&&board[2][0]===playerTurn)||(board[0][1]===playerTurn&&board[1][1]===playerTurn&&board[2][1]===playerTurn)||(board[0][2]===playerTurn&&board[1][2]===playerTurn&&board[2][2]===playerTurn)){
+    return true;
+  }
 }
 
 function diagonalWin() {
-    // Your code here
+  if((board[0][0]===playerTurn&&board[1][1]===playerTurn&&board[2][2]===playerTurn)||(board[0][2]===playerTurn&&board[1][1]===playerTurn&&board[2][0]===playerTurn)){
+    return true;
+  }
 }
 
 function checkForWin() {
-    // Your code here
+    if(verticalWin()===true || horizontalWin()===true || diagonalWin()===true){
+      console.log('Player '+playerTurn+' won!');
+      return true;
+    }
 }
 
 function ticTacToe(row, column) {
     // Your code here
+    board[row][column] = playerTurn;
+    checkForWin();
+    togglePlayerTurn();
 }
 
 function getPrompt() {

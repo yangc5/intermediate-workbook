@@ -4,6 +4,16 @@ var assert = require('assert');
 
 function loopIt() {
     // should return an array with numbers 0 - 99
+    var array = [];
+    // for(var i=0; i<=99; i++) {
+    //   array.push(i);
+    // }
+    var i = 0;
+    while(i<=99) {
+      array.push(i);
+      i++;
+    }
+    return array;
 
 }
 
@@ -43,4 +53,3 @@ describe('#fizzBuzz', function () {
         assert.deepEqual(fizzBuzz(), array);
     });
 });
-

@@ -5,8 +5,31 @@ var assert = require('assert');
 // Given an array A, find the int that appears an odd number of times.
 // There will always be only one integer that appears an odd number of times.
 
+//[1, 2, 3, 4, 5, 2, 1, 4, 2, 3, 5]
+//should return 2
+
 function findOdd(arr) {
     // Your code here
+    var count=0;
+    var unique = arr.filter(function(item, i){
+      return arr.indexOf(item) === i;
+    });
+
+    for(var i=0; i<unique.length; i++){
+      for(var j=0; j<arr.length; j++){
+        if(arr[j]===unique[i]) {
+          count++;
+        }
+      }
+
+      if(count%2!==0) {
+        return unique[i];
+      }
+      else{
+        count = 0;
+      }
+    }
+
 }
 
 
